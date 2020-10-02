@@ -62,8 +62,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements BaseSli
         initView();
         loadData(id);
         initController();
-        //secondpush
-        //this is the first push
+        //push
     }
 
     private void initView() {
