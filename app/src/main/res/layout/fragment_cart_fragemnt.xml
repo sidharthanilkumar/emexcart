@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CartFragment">
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/cartList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_centerHorizontal="true"
+            android:id="@+id/text_coupun"
+            android:text="apply coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <LinearLayout
+            android:layout_below="@+id/text_coupun"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_margin="@dimen/_8sdp"
+                android:backgroundTint="@color/light_grey"
+                android:layout_weight="1"
+                android:textColor="@color/textColorSecondary"
+                android:text="Update basket"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </Button>
+            <Button
+                android:text="Proceed to check out"
+                android:layout_margin="@dimen/_8sdp"
+                android:backgroundTint="@color/cart_blue"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </Button>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

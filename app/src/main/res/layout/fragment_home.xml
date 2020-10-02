@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.HomeFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_cat"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@drawable/samsung"
+            android:id="@+id/dummyBanner"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+        </ImageView>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_below="@id/dummyBanner"
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabGravity="center"
+            app:tabTextAppearance="@style/CustomTextAppearanceTab"
+            app:tabSelectedTextColor="@color/text_yellow"
+            app:tabTextColor="@color/textColorSecondary">
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/CategoryPager"
+            android:layout_below="@id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:focusable="false" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

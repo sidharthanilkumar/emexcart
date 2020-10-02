@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layerType="software"
+    android:background="@color/litegrey"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/tools"
+    tools:context=".Activities.ProductDetailsActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/product_cover_slider"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@color/windowBackground"
+            custom:auto_cycle="true"
+            custom:indicator_visibility="visible" />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/product_slider_indicator"
+            style="@style/AndroidImageSlider_Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/product_cover_slider"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            app:selected_color="@color/colorPrimary"
+            app:unselected_color="@color/layoutBackground"/>
+
+        <TextView
+            android:id="@+id/prodName"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="12sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/_25sdp"
+            android:textStyle="bold"
+            android:layout_below="@+id/product_cover_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+<!--        <WebView-->
+<!--            android:layout_marginTop="@dimen/_12sdp"-->
+<!--            android:layout_below="@+id/prodName"-->
+<!--            android:layout_marginStart="@dimen/_12sdp"-->
+<!--            android:id="@+id/product_price_webView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_alignParentStart="true"/>-->
+
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:id="@+id/detailLyt"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_below="@+id/prodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/lbldesc"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/brand"
+                    android:id="@+id/lblbrandName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text="@string/procuct_code"
+                    android:id="@+id/lblprodCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text="@string/availability"
+                    android:id="@+id/lblAvailablity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text="@string/price"
+                    android:id="@+id/lblPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text="@string/rewards"
+                    android:id="@+id/lblRewards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text="Quantity"
+                    android:id="@+id/lblqty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_toRightOf="@id/lbldesc"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:maxLines="1"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:id="@+id/brandName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:id="@+id/prodCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:text=""
+                    android:textColor="@color/track_green"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/Availablity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_18sdp"
+                    android:id="@+id/Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:id="@+id/Rewards"
+                    android:textColor="@color/track_green"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+                <include
+                    layout="@layout/design_quantity"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </include>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@color/litegrey"
+            android:layout_below="@+id/detailLyt"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp">
+        </View>
+
+        <RelativeLayout
+            android:id="@+id/delvrylyt"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_below="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:id="@+id/label_Delvery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginEnd="@dimen/_40sdp"
+                    android:text="@string/delivery"
+                    android:id="@+id/lblDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_toRightOf="@id/label_Delvery"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/design_delivery">
+
+                </include>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@color/litegrey"
+            android:layout_below="@+id/delvrylyt"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp">
+        </View>
+
+        <LinearLayout
+            android:id="@+id/cartLayout"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_below="@id/view2"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textColor="@color/textColorPrimary"
+                android:text="Add to cart"
+                android:drawableStart="@drawable/ic_shopping_cart"
+                android:backgroundTint="@color/bg_yellow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Button>
+            <Button
+                android:textColor="@color/textColorPrimary"
+                android:text="share"
+                android:drawableStart="@drawable/ic_cart_empty"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:backgroundTint="@color/litegrey2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Button>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@color/litegrey"
+            android:layout_below="@+id/cartLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp">
+        </View>
+
+        <WebView
+            android:layout_below="@+id/view3"
+            android:id="@+id/product_description_webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp" />
+
+        <Button
+            android:id="@+id/btnshowMore"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_below="@+id/product_description_webView"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="READ MORE"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp">
+        </Button>
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btnshowLess"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_below="@+id/product_description_webView"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="SHOW LESS"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp">
+        </Button>
+
+        <WebView
+            android:visibility="gone"
+            android:layout_below="@+id/btnshowLess"
+            android:id="@+id/product_more_description_webView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp" />
+
+    </RelativeLayout>
+</ScrollView>

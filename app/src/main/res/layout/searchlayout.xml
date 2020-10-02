@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_yellow"
+    android:layout_height="@dimen/_70sdp">
+
+
+    <RelativeLayout
+        android:layout_margin="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/spinner_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/search_src_text"
+            android:layout_width="match_parent"
+            android:hint="Search Products"
+            android:paddingStart="@dimen/_4sdp"
+            android:textSize="@dimen/_12sdp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_toStartOf="@+id/search_button"
+            android:layout_toEndOf="@+id/spinner_cat">
+
+        </EditText>
+
+        <RelativeLayout
+            android:background="@color/bg_yellow2"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_search"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp">
+        </ImageView>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
