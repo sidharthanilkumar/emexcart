@@ -63,6 +63,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements BaseSli
         loadData(id);
         initController();
         //push
+        //push 2
     }
 
     private void initView() {
