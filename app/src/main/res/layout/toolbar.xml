@@ -1,9 +1,11 @@
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/appBar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:theme="@style/AppTheme.AppBarOverlay">
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:context=".Activities.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarr"
@@ -15,14 +17,6 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:titleTextColor="@color/textColorPrimary">
-
-
-        <ImageView
-            android:background="@drawable/ic_menu_white_24dp"
-            android:layout_width="wrap_content"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_height="wrap_content">
-        </ImageView>
 
 
         <ImageView
