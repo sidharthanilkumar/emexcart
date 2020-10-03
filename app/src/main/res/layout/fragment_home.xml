@@ -6,6 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HomeFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <RelativeLayout
         android:id="@+id/rl_cat"
         android:visibility="visible"
@@ -39,22 +44,51 @@
             android:focusable="false" />
 
         <LinearLayout
+            android:id="@+id/ad_image_layout"
+            android:weightSum="2"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_below="@id/CategoryPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
+                android:layout_margin="@dimen/_12sdp"
+                android:layout_weight="1"
+                android:src="@drawable/demo_image2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </ImageView>
             <ImageView
+                android:layout_margin="@dimen/_12sdp"
+                android:layout_weight="1"
+                android:src="@drawable/demo_image2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </ImageView>
 
         </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_below="@id/ad_image_layout"
+            android:id="@+id/tabLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabGravity="center"
+            app:tabTextAppearance="@style/CustomTextAppearanceTab"
+            app:tabSelectedTextColor="@color/text_yellow"
+            app:tabTextColor="@color/textColorSecondary">
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/CategoryPager2"
+            android:layout_below="@id/tabLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:focusable="false" />
     </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 
 </RelativeLayout>

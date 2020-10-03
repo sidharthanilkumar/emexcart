@@ -28,50 +28,53 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class TopRatedProducts extends Fragment {
+public class BestSeller extends Fragment {
+
     private RecyclerView recyclerView;
     private ProductListAdapter adapter;
     private List<ProductDetails> productDetails;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_top_rated, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_best_seller, container, false);
         initView(view);
         loadData();
         return view;
     }
     private void initView(View root) {
-        recyclerView = root.findViewById(R.id.recycler_top_rated);
+        recyclerView = root.findViewById(R.id.recycler_bestSeller);
     }
+
     private void loadData() {
         try {
             Map<String, String> params = new LinkedHashMap<>();
-            params.put("orderby", "date");
-            params.put("lang", "en");
+            params.put("featured", "true");
+            params.put("lang","en");
             RestServiceBuilder.getService(getContext()).getAllProducts(params).enqueue(new Callback<List<ProductDetails>>() {
                 @Override
                 public void onResponse(Call<List<ProductDetails>> call, Response<List<ProductDetails>> response) {
-                    if (response.isSuccessful()) {
-                        productDetails = response.body();
+                    if (response.isSuccessful()){
+                        productDetails =response.body();
                         initRecycler();
-                    } else {
-                        Toast.makeText(getActivity(), response.code() + "", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(getActivity(),response.code()+"",Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<ProductDetails>> call, Throwable t) {
-                    Toast.makeText(getActivity(), t + "", Toast.LENGTH_LONG).show();
-                    Log.e("woooerror", t + "");
+                    Toast.makeText(getActivity(),t+"",Toast.LENGTH_LONG).show();
+                    Log.e("woooerror",t+"");
                 }
             });
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     private void initRecycler() {
-        adapter = new ProductListAdapter(getActivity(), productDetails, new ProductListAdapter.AdapterListner() {
+        adapter = new ProductListAdapter(getActivity(),productDetails, new ProductListAdapter.AdapterListner() {
             @Override
             public void onclick(String user_id) {
                 Intent intent = new Intent(getActivity(), ProductDetailsActivity.class);
@@ -83,4 +86,5 @@ public class TopRatedProducts extends Fragment {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
+
 }

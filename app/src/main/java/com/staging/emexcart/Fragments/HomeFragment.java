@@ -12,26 +12,55 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.staging.emexcart.R;
 import com.staging.emexcart.ViewPagerAdapter.ViewPagerAdapterOther;
+import com.staging.emexcart.ViewPagerAdapter.ViewPagerAdapterPhones;
 
 public class HomeFragment extends Fragment {
-    TabLayout tabLayout;
-    ViewPager viewPager;
+    TabLayout tabLayout,tabLayout2;
+    ViewPager viewPager,viewPager2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initView(view);
-        setUpTabs();
+        setUpTopTabs();
+        setUpBottomTabs();
         return  view;
+    }
+
+    private void setUpBottomTabs() {
+        tabLayout2.addTab(tabLayout2.newTab().setText("Trending"));
+        tabLayout2.addTab(tabLayout2.newTab().setText("Best Seller"));
+        tabLayout2.setTabGravity(TabLayout.GRAVITY_FILL);
+        ViewPagerAdapterPhones adapter = new ViewPagerAdapterPhones(getActivity().getSupportFragmentManager(), tabLayout2.getTabCount());
+        viewPager2.setAdapter(adapter);
+        viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout2));
+        tabLayout2.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager2.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
 
     private void initView(View root){
         tabLayout = root.findViewById(R.id.tabLayout);
         viewPager = root.findViewById(R.id.CategoryPager);
+        tabLayout2 = root.findViewById(R.id.tabLayout2);
+        viewPager2 = root.findViewById(R.id.CategoryPager2);
     }
 
-    private void setUpTabs() {
+    private void setUpTopTabs() {
         tabLayout.addTab(tabLayout.newTab().setText("Featured"));
         tabLayout.addTab(tabLayout.newTab().setText("On Sale"));
         tabLayout.addTab(tabLayout.newTab().setText("Top Rated"));
