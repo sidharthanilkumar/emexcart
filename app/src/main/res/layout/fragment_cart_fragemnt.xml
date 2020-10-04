@@ -6,12 +6,16 @@
     tools:context=".Fragments.CartFragment">
 
 <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/cartList"
+    android:id="@+id/recycler_cartList"
+    android:layout_alignParentTop="true"
+    android:layout_above="@id/layout_checkout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
+        android:background="@color/light_grey"
+        android:id="@+id/layout_checkout"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
