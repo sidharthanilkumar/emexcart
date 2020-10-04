@@ -70,17 +70,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         toggle.syncState();
     }
 
-
-    public void loadFragment(Fragment fragment) {
-        String backStateName = fragment.getClass().getName();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.nav_host_fragment, fragment);
-        fragmentTransaction.addToBackStack(backStateName);
-        fragmentTransaction.commit();
-    }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
