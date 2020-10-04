@@ -16,6 +16,7 @@
         <activity android:name=".Activities.AccountDetails" />
         <activity android:name=".Activities.ProductDetailsActivity" />
         <activity android:name=".Activities.ProductListActivity" />
+        <activity android:name=".Activities.CartActivity" />
         <activity android:name=".Activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

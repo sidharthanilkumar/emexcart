@@ -10,9 +10,9 @@
         android:name="com.staging.emexcart.Fragments.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_all_profile"
-        android:name="com.staging.emexcart.Fragments.CartFragment"
+        android:name="com.staging.emexcart.Activities.CartActivity"
         tools:layout="@layout/fragment_cart_fragemnt" />
     <fragment
         android:id="@+id/navigation_mailbox"
