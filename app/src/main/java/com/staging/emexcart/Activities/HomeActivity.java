@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private AppBarConfiguration appBarConfiguration;
     private Toolbar toolbarr;
     private DrawerLayout drawer;
+    private TextView nv_login, nv_myorders, nv_address, nv_acdetails, nv_changepsw, nv_logout;
 
 
     @Override
@@ -35,22 +37,37 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_layout);
 
-        navView = findViewById(R.id.nav_view);
-        search = findViewById(R.id.search_button);
-        signup = findViewById(R.id.btnSignIn);
-        toolbarr = findViewById(R.id.toolbarr);
-        drawer = findViewById(R.id.drawlayout);
-
-
+        Initial();
         CallDrawer();
         BottomNav();
         Clicks();
 
     }
 
+    private void Initial() {
+        navView = findViewById(R.id.nav_view);
+        search = findViewById(R.id.search_button);
+        signup = findViewById(R.id.btnSignIn);
+        toolbarr = findViewById(R.id.toolbarr);
+        drawer = findViewById(R.id.drawlayout);
+        nv_login = findViewById(R.id.nv_login);
+        nv_myorders = findViewById(R.id.nv_myorders);
+        nv_address = findViewById(R.id.nv_address);
+        nv_acdetails = findViewById(R.id.nv_acdetails);
+        nv_changepsw = findViewById(R.id.nv_changepsw);
+        nv_logout = findViewById(R.id.nv_logout);
+    }
+
     private void Clicks() {
         search.setOnClickListener(this);
         signup.setOnClickListener(this);
+        nv_login.setOnClickListener(this);
+        nv_myorders.setOnClickListener(this);
+        nv_acdetails.setOnClickListener(this);
+        nv_address.setOnClickListener(this);
+        nv_changepsw.setOnClickListener(this);
+        nv_logout.setOnClickListener(this);
+
     }
 
     private void BottomNav() {
@@ -73,11 +90,35 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_button:
-                startActivity(new Intent(getApplicationContext(), ProductListActivity.class));
+                goTo(ProductDetailsActivity.class);
                 break;
             case R.id.btnSignIn:
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                goTo(LoginActivity.class);
                 break;
+            case R.id.nv_login:
+                goTo(LoginActivity.class);
+                break;
+            case R.id.nv_myorders:
+//                goTo();
+                break;
+            case R.id.nv_address:
+                goTo(AddressActivity.class);
+                break;
+            case R.id.nv_acdetails:
+                goTo(AccountDetails.class);
+                break;
+            case R.id.nv_changepsw:
+                goTo(ChangePassword.class);
+                break;
+            case R.id.nv_logout:
+//                goTo();
+                break;
+
         }
+    }
+
+    private void goTo(Class name) {
+        startActivity(new Intent(getApplicationContext(), name));
+
     }
 }
