@@ -263,6 +263,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/btnAddToCart"
                 android:textColor="@color/textColorPrimary"
                 android:text="Add to cart"
                 android:drawableStart="@drawable/ic_shopping_cart"
@@ -271,6 +272,7 @@
                 android:layout_height="wrap_content">
             </Button>
             <Button
+                android:id="@+id/btnShare"
                 android:textColor="@color/textColorPrimary"
                 android:text="share"
                 android:drawableStart="@drawable/ic_cart_empty"

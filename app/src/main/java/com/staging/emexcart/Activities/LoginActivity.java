@@ -15,6 +15,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.staging.emexcart.Network.RestServiceBuilder;
 import com.staging.emexcart.R;
+import com.staging.emexcart.Utils.Sharedpreference;
+import com.staging.emexcart.models.LoginModel;
 import com.staging.emexcart.models.user_model.UserData;
 
 import retrofit2.Call;
@@ -25,11 +27,14 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout signup;
     TextInputEditText email, password;
     Button signIn;
+    private Sharedpreference sharedpreference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedpreference = new Sharedpreference(getApplicationContext());
         initView();
         initController();
     }
@@ -56,18 +61,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String emails = email.getText().toString();
                 String passwords = password.getText().toString();
-                RestServiceBuilder.getService(getApplicationContext()).processLogin(emails,passwords).enqueue(new Callback<UserData>() {
+                RestServiceBuilder.getService(getApplicationContext()).processLogin(emails,passwords).enqueue(new Callback<LoginModel>() {
                     @Override
-                    public void onResponse(Call<UserData> call, Response<UserData> response) {
+                    public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                         if (response.isSuccessful()){
-                            Toast.makeText(getApplicationContext(),response.code()+"",Toast.LENGTH_LONG).show();
+                            sharedpreference.saveLoginStatus(true);
+                            sharedpreference.saveUserMail(response.body().getUserEmail());
+                            sharedpreference.saveUserID(response.body().getUserId().toString());
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
                         }else {
                             Toast.makeText(getApplicationContext(),response.code()+"",Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<UserData> call, Throwable t) {
+                    public void onFailure(Call<LoginModel> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),t+"",Toast.LENGTH_LONG).show();
                     }
                 });

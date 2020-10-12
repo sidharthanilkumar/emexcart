@@ -11,19 +11,15 @@
         tools:layout="@layout/fragment_home" />
 
     <activity
-        android:id="@+id/navigation_all_profile"
+        android:id="@+id/navigation_cart"
         android:name="com.staging.emexcart.Activities.CartActivity"
         tools:layout="@layout/fragment_cart_fragemnt" />
     <fragment
-        android:id="@+id/navigation_mailbox"
+        android:id="@+id/navigation_my_orders"
         android:name="com.staging.emexcart.Fragments.OrdersFragment"
         tools:layout="@layout/fragment_orders" />
     <fragment
-        android:id="@+id/navigation_matches"
-        android:name="com.staging.emexcart.Fragments.AccountFragment"
-        tools:layout="@layout/fragment_account" />
-    <fragment
-        android:id="@+id/navigation_mypofile"
+        android:id="@+id/navigation_support"
         android:name="com.staging.emexcart.Fragments.SupportFragment"
         tools:layout="@layout/fragment_support" />
 </navigation>

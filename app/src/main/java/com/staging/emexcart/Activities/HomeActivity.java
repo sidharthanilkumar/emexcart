@@ -20,7 +20,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.staging.emexcart.Fragments.OrdersFragment;
 import com.staging.emexcart.R;
+import com.staging.emexcart.Utils.Sharedpreference;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private RelativeLayout search;
@@ -28,19 +30,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private BottomNavigationView navView;
     private AppBarConfiguration appBarConfiguration;
     private Toolbar toolbarr;
+    private Sharedpreference sharedpreference;
     private DrawerLayout drawer;
-    private TextView nv_login, nv_myorders, nv_address, nv_acdetails, nv_changepsw, nv_logout;
+    private TextView nv_login, nv_myorders, nv_address, nv_acdetails, nv_changepsw, nv_logout, nv_user_name;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_layout);
-
+        sharedpreference = new Sharedpreference(getApplicationContext());
         Initial();
         CallDrawer();
         BottomNav();
         Clicks();
+        if (sharedpreference.getLoginStatus()) {
+            addVisibility();
+        } else {
+            removeVisibility();
+        }
+
 
     }
 
@@ -56,6 +65,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         nv_acdetails = findViewById(R.id.nv_acdetails);
         nv_changepsw = findViewById(R.id.nv_changepsw);
         nv_logout = findViewById(R.id.nv_logout);
+        nv_user_name = findViewById(R.id.nv_user_name);
     }
 
     private void Clicks() {
@@ -72,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void BottomNav() {
         appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_all_profile, R.id.navigation_mailbox, R.id.navigation_matches, R.id.navigation_mypofile)
+                R.id.navigation_home, R.id.navigation_cart, R.id.navigation_my_orders, R.id.navigation_support)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
@@ -86,6 +96,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         toggle.syncState();
     }
 
+    private void addVisibility() {
+        signup.setVisibility(View.GONE);
+        nv_login.setVisibility(View.GONE);
+        nv_myorders.setVisibility(View.GONE);
+        nv_changepsw.setVisibility(View.VISIBLE);
+        nv_logout.setVisibility(View.VISIBLE);
+        nv_user_name.setVisibility(View.VISIBLE);
+        nv_user_name.setText(sharedpreference.getUserMail());
+    }
+
+    private void removeVisibility() {
+        signup.setVisibility(View.VISIBLE);
+        nv_login.setVisibility(View.VISIBLE);
+        nv_myorders.setVisibility(View.GONE);
+        nv_changepsw.setVisibility(View.GONE);
+        nv_logout.setVisibility(View.GONE);
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -93,13 +122,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 goTo(ProductDetailsActivity.class);
                 break;
             case R.id.btnSignIn:
-                goTo(LoginActivity.class);
-                break;
             case R.id.nv_login:
                 goTo(LoginActivity.class);
                 break;
             case R.id.nv_myorders:
-//                goTo();
+                if (sharedpreference.getLoginStatus()) {
+                    loadFragment(new OrdersFragment());
+                }
                 break;
             case R.id.nv_address:
                 goTo(AddressActivity.class);
@@ -119,6 +148,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void goTo(Class name) {
         startActivity(new Intent(getApplicationContext(), name));
+    }
+
+    public void loadFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.nav_host_fragment, fragment);
+        fragmentTransaction.addToBackStack(backStateName);
+        fragmentTransaction.commit();
 
     }
 }

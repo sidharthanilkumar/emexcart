@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 import com.bumptech.glide.Glide;
@@ -48,6 +49,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements BaseSli
     private PagerIndicator pagerIndicator;
     private ImageView sliderImageView;
     private Button showMore,showLess;
+    private Button btnAdd,btnShare;
     private ProductDetails productDetails;
     private TextView tvProdBrand,tvProdCode,tvProdPrice,tvRewards,tvAvailabity;
 
@@ -77,11 +79,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements BaseSli
         tvRewards =findViewById(R.id.Rewards);
         tvAvailabity =findViewById(R.id.Availablity);
         showMore =findViewById(R.id.btnshowMore);
+        btnAdd =findViewById(R.id.btnAddToCart);
+        btnShare =findViewById(R.id.btnShare);
         showLess =findViewById(R.id.btnshowLess);
         sliderLayout = (SliderLayout) findViewById(R.id.product_cover_slider);
         pagerIndicator = (PagerIndicator) findViewById(R.id.product_slider_indicator);
     }
-
     private void loadData(String id) {
         RestServiceBuilder.getService(getApplicationContext()).getSingleProducts(id).enqueue(new Callback<ProductDetails>() {
             @Override
@@ -164,6 +167,21 @@ public class ProductDetailsActivity extends AppCompatActivity implements BaseSli
                 showmoreWebView.setVisibility(View.GONE);
             }
         });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Added to cart",Toast.LENGTH_LONG).show();
+            }
+        });
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Share Product",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
 
     private void initPriceWebView(String description){

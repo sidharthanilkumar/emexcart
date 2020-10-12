@@ -6,19 +6,15 @@
         android:icon="@drawable/ic_home"
         android:title="@string/home_title" />
     <item
-        android:id="@+id/navigation_all_profile"
+        android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_shopping_cart"
         android:title="@string/cart" />
     <item
-        android:id="@+id/navigation_mailbox"
+        android:id="@+id/navigation_my_orders"
         android:icon="@drawable/ic_listmenu"
         android:title="@string/orders" />
     <item
-        android:id="@+id/navigation_matches"
-        android:icon="@drawable/ic_face"
-        android:title="@string/lbl_account" />
-    <item
-        android:id="@+id/navigation_mypofile"
+        android:id="@+id/navigation_support"
         android:icon="@drawable/ic_call_suport"
         android:title="@string/support" />
 </menu>

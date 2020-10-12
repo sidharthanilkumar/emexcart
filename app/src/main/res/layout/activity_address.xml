@@ -6,7 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AddressActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bg_yellow2"
+        android:id="@+id/rl_header">
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Address Details "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        />
+
+    </RelativeLayout>
+
     <com.google.android.material.tabs.TabLayout
+        android:layout_below="@id/rl_header"
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

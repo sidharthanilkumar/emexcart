@@ -27,8 +27,8 @@ public class AddressActivity extends AppCompatActivity {
     }
 
     private void setUpTopTabs() {
-        tabLayout.addTab(tabLayout.newTab().setText("Shipping Address"));
         tabLayout.addTab(tabLayout.newTab().setText("Billing Address"));
+        tabLayout.addTab(tabLayout.newTab().setText("Shipping Address"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         ViewPagerAddressAdapter adapter = new ViewPagerAddressAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

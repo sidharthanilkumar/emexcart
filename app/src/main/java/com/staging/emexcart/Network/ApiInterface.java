@@ -1,7 +1,9 @@
 package com.staging.emexcart.Network;
 
+import com.staging.emexcart.models.LoginModel;
 import com.staging.emexcart.models.product_model.ProductDetails;
 import com.staging.emexcart.models.user_model.UserData;
+import com.staging.emexcart.models.user_model.UserDetails;
 
 import java.util.List;
 import java.util.Map;
@@ -22,9 +24,12 @@ public interface ApiInterface {
     @GET("wp-json/wc/v3/products/{id}")
     Call<ProductDetails> getSingleProducts(@Path("id") String product_id);
 
+    @GET("wp-json/wc/v3/customers/{id}")
+    Call<UserDetails> getUserDetails(@Path("id") String product_id);
+
     @FormUrlEncoded
     @POST("wp-json/jwt-auth/v1/token")
-    Call<UserData> processLogin(
+    Call<LoginModel> processLogin(
             @Field("username") String customers_username,
             @Field("password") String customers_password);
 }

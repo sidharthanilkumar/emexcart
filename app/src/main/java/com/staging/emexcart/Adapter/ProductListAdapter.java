@@ -29,7 +29,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         void onclick(String user_id);
     }
 
-    public ProductListAdapter(Context context,List<ProductDetails> allprofilesDataClasses, AdapterListner listner) {
+    public ProductListAdapter(Context context, List<ProductDetails> allprofilesDataClasses, AdapterListner listner) {
         this.listdata = allprofilesDataClasses;
         this.listner = listner;
         this.context = context;
@@ -46,11 +46,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        setVisibility(holder.name,listdata.get(position).getName());
-        setVisibility(holder.discount_price,listdata.get(position).getSalePrice());
+        setVisibility(holder.name, listdata.get(position).getName());
+        setVisibility(holder.discount_price, listdata.get(position).getSalePrice());
         setVisibility(holder.original_price, listdata.get(position).getRegularPrice());
         holder.ratingBar.setRating(Float.parseFloat(String.valueOf(listdata.get(position).getRatingCount())));
-        loadImage(listdata.get(position).getImages().get(0).getSrc(), holder.imageView);
+        if (listdata.get(position).getImages().size() > 0) {
+            loadImage(listdata.get(position).getImages().get(0).getSrc(), holder.imageView);
+        }
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
