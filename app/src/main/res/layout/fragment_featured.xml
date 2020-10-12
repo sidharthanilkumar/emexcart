@@ -6,9 +6,8 @@
     tools:context=".ViewPagerUi.FeaturedProducts">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
         android:id="@+id/recycler_premium"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_240sdp"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

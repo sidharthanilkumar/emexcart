@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.staging.emexcart.Network.RestServiceBuilder;
 import com.staging.emexcart.R;
 import com.staging.emexcart.Utils.Sharedpreference;
@@ -21,29 +24,47 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BillingAddress extends Fragment {
-    Sharedpreference sharedpreference;
-    TextView tvfirstName,tvlastName,tvcompanyName,tvcountry,tvstreet,tvzip,tvphone,tvemail,tvCity;
+public class BillingAddress extends Fragment implements View.OnClickListener{
+    private Sharedpreference sharedpreference;
+    private TextView tv_firstname, tv_lastname, tv_company, tv_country, tv_address, tv_pincode, tv_city;
+    private EditText et_frstname, et_lastname, et_cmpname, et_country, et_address, et_city, et_postcode;
+    private Button bt_update;
+    private FloatingActionButton fab_edit;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View  view = inflater.inflate(R.layout.fragment_billing_address, container, false);
         sharedpreference = new Sharedpreference(getContext());
         initView(view);
+        clicks();
         loadData();
         return view;
     }
 
+    private void clicks() {
+        fab_edit.setOnClickListener(this);
+    }
+
     private void initView(View root) {
-        tvfirstName = root.findViewById(R.id.editTextTextPersonName9);
-         tvlastName= root.findViewById(R.id.editTextTextPersonName10);
-        tvcompanyName = root.findViewById(R.id.editTextTextPersonName11);
-        tvcountry = root.findViewById(R.id.editTextTextPersonName12);
-        tvstreet = root.findViewById(R.id.editTextTextPersonName13);
-        tvCity = root.findViewById(R.id.editTextTextPersonName14);
-        tvzip = root.findViewById(R.id.editTextTextPersonName15);
-        tvphone = root.findViewById(R.id.editTextTextPersonName16);
-        tvemail = root.findViewById(R.id.editTextTextPersonName17);
+        et_lastname = root.findViewById(R.id.et_lastname);
+        et_frstname = root.findViewById(R.id.et_frstname);
+        et_cmpname = root.findViewById(R.id.et_cmpname);
+        et_country = root.findViewById(R.id.et_country);
+        et_address = root.findViewById(R.id.et_address);
+        et_city = root.findViewById(R.id.et_city);
+        et_postcode = root.findViewById(R.id.et_postcode);
+
+        bt_update = root.findViewById(R.id.bt_update);
+        fab_edit = root.findViewById(R.id.fab_edit);
+
+        tv_firstname = root.findViewById(R.id.tv_firstname);
+        tv_lastname = root.findViewById(R.id.tv_lastname);
+        tv_company = root.findViewById(R.id.tv_company);
+        tv_country = root.findViewById(R.id.tv_country);
+        tv_address = root.findViewById(R.id.tv_address);
+        tv_pincode = root.findViewById(R.id.tv_pincode);
+        tv_city = root.findViewById(R.id.tv_city);
     }
 
     private void loadData(){
@@ -66,18 +87,53 @@ public class BillingAddress extends Fragment {
         });
     }
 
-    private void initValues(UserDetails userDetails){
-        tvfirstName.setText(userDetails.getBilling().getFirstName());
-        tvlastName.setText(userDetails.getBilling().getLastName());
-        if (TextUtils.isEmpty(userDetails.getBilling().getCompany())){
-            tvcompanyName.setText(userDetails.getBilling().getCompany());
+    private void initValues(UserDetails userDetails) {
+        set_tv(userDetails);
+        set_et(userDetails);
+    }
+
+    private void set_et(UserDetails userDetails) {
+        et_frstname.setText(userDetails.getShipping().getFirstName());
+        et_lastname.setText(userDetails.getShipping().getLastName());
+        if (TextUtils.isEmpty(userDetails.getShipping().getCompany())) {
+            et_cmpname.setText(userDetails.getShipping().getCompany());
 
         }
-        tvcountry.setText(userDetails.getBilling().getCountry());
-        tvstreet.setText(userDetails.getBilling().getAddress1());
-        tvCity.setText(userDetails.getBilling().getCity());
-        tvzip.setText(userDetails.getBilling().getPostcode());
-        tvphone.setText(userDetails.getBilling().getPhone());
-        tvemail.setText(userDetails.getBilling().getEmail());
+        et_country.setText(userDetails.getShipping().getCountry());
+        et_address.setText(userDetails.getShipping().getAddress1());
+        et_city.setText(userDetails.getShipping().getCity());
+        et_postcode.setText(userDetails.getShipping().getPostcode());
+    }
+
+    private void set_tv(UserDetails userDetails) {
+        tv_firstname.setText(userDetails.getShipping().getFirstName());
+        tv_lastname.setText(userDetails.getShipping().getLastName());
+        if (TextUtils.isEmpty(userDetails.getShipping().getCompany())) {
+            tv_company.setText(userDetails.getShipping().getCompany());
+
+        }
+        tv_country.setText(userDetails.getShipping().getCountry());
+        tv_address.setText(userDetails.getShipping().getAddress1());
+        tv_city.setText(userDetails.getShipping().getCity());
+        tv_pincode.setText(userDetails.getShipping().getPostcode());
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_edit:
+                setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setVisibility(int visible) {
+        et_lastname.setVisibility(visible);
+        et_cmpname.setVisibility(visible);
+        et_country.setVisibility(visible);
+        et_address.setVisibility(visible);
+        et_city.setVisibility(visible);
+        et_frstname.setVisibility(visible);
+        et_postcode.setVisibility(visible);
+        bt_update.setVisibility(visible);
     }
 }

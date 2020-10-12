@@ -77,7 +77,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         nv_address.setOnClickListener(this);
         nv_changepsw.setOnClickListener(this);
         nv_logout.setOnClickListener(this);
-
     }
 
     private void BottomNav() {

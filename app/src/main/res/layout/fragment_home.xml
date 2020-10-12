@@ -40,8 +40,8 @@
             android:id="@+id/CategoryPager"
             android:layout_below="@id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
-            android:focusable="false" />
+            android:layout_height="@dimen/_240sdp"
+            />
 
         <LinearLayout
             android:id="@+id/ad_image_layout"
